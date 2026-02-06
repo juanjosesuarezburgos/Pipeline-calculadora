@@ -1,0 +1,20 @@
+name: Pipeline de Calculadora
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test-automatico:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Ejecutar Tests
+        run: python -m unittest tests.py
